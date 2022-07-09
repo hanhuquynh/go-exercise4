@@ -13,10 +13,12 @@ func main() {
 
 	// listUser()
 
-	// listUserById(88)
+	// listUserById(1)
 
-	// for i := 1; i <= 100; i++ {
+	// for i := 1; i <= 10; i++ {
 	// 	insertUser(i, "test"+strconv.Itoa(i), 2001, 9, 9)
 	// }
+
+	transaction(2, 2000)
 
 }

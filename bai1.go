@@ -22,7 +22,7 @@ type Point struct {
 }
 
 func createDB(name string) {
-	db, err := sql.Open("mysql", "root:hanhuquynh@tcp(127.0.0.1:3306)/")
+	db, err := sql.Open("mysql", "root@tcp(127.0.0.1:3306)/")
 
 	if err != nil {
 		panic(err.Error())
@@ -62,7 +62,7 @@ func createDB(name string) {
 }
 
 func insertUser(id int, name string, birth, created, updated_at int) {
-	db, err := sql.Open("mysql", "root:hanhuquynh@tcp(127.0.0.1:3306)/test")
+	db, err := sql.Open("mysql", "root@tcp(127.0.0.1:3306)/test")
 
 	if err != nil {
 		panic(err.Error())
@@ -74,16 +74,21 @@ func insertUser(id int, name string, birth, created, updated_at int) {
 
 	if err != nil {
 		panic(err.Error())
-	} else {
-		fmt.Println("Insert user successfully")
+	}
+
+	afterIns, err := db.Query("INSERT INTO point (user_id, points) VALUES(?, 10)", id)
+
+	if err != nil {
+		panic(err.Error())
 	}
 
 	defer ins.Close()
+	defer afterIns.Close()
 
 }
 
 func updateUser(id int, name string, birth int, created int, updated_at int) {
-	db, err := sql.Open("mysql", "root:hanhuquynh@tcp(127.0.0.1:3306)/test")
+	db, err := sql.Open("mysql", "root@tcp(127.0.0.1:3306)/test")
 
 	if err != nil {
 		panic(err.Error())
@@ -103,7 +108,7 @@ func updateUser(id int, name string, birth int, created int, updated_at int) {
 }
 
 func listUser() {
-	db, err := sql.Open("mysql", "root:hanhuquynh@tcp(127.0.0.1:3306)/test")
+	db, err := sql.Open("mysql", "root@tcp(127.0.0.1:3306)/test")
 
 	if err != nil {
 		panic(err.Error())
@@ -130,7 +135,7 @@ func listUser() {
 }
 
 func listUserById(id int) {
-	db, err := sql.Open("mysql", "root:hanhuquynh@tcp(127.0.0.1:3306)/test")
+	db, err := sql.Open("mysql", "root@tcp(127.0.0.1:3306)/test")
 
 	if err != nil {
 		panic(err.Error())
