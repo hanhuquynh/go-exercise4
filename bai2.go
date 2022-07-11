@@ -13,7 +13,7 @@ func transaction(id, birth int) {
 	db, err := sql.Open("mysql", "root@tcp(127.0.0.1:3306)/test")
 
 	if err != nil {
-		panic(err.Error())
+		log.Fatal(err)
 	}
 
 	defer db.Close()
@@ -21,7 +21,7 @@ func transaction(id, birth int) {
 	tx, err := db.Begin()
 
 	if err != nil {
-		panic(err.Error())
+		log.Fatal(err)
 	}
 
 	_, err = tx.Exec("UPDATE user SET birth = ? WHERE id = ?", birth, id)
@@ -37,7 +37,7 @@ func transaction(id, birth int) {
 	point, err := db.Query("SELECT points FROM point WHERE user_id = ?", id)
 
 	if err != nil {
-		panic(err.Error())
+		log.Fatal(err)
 	}
 
 	var getPoint int
@@ -46,7 +46,7 @@ func transaction(id, birth int) {
 		err = point.Scan(&getPoint)
 
 		if err != nil {
-			panic(err.Error())
+			log.Fatal(err)
 		}
 	}
 
@@ -63,7 +63,7 @@ func transaction(id, birth int) {
 	rows, err := db.Query("SELECT name, updated_at FROM user WHERE id = ?", id)
 
 	if err != nil {
-		panic(err.Error())
+		log.Fatal(err)
 	}
 
 	var name string
@@ -73,7 +73,7 @@ func transaction(id, birth int) {
 		err = rows.Scan(&name, &updated_at)
 
 		if err != nil {
-			panic(err.Error())
+			log.Fatal(err)
 		}
 	}
 
