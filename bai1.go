@@ -7,20 +7,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-type User struct {
-	Id         int
-	Name       string
-	Birth      int
-	Created    int
-	Updated_at int
-}
-
-type Point struct {
-	User_id    int
-	Points     int
-	Max_points int
-}
-
 func createDB(name string) {
 	db, err := sql.Open("mysql", "root@tcp(127.0.0.1:3306)/")
 

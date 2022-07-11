@@ -1,6 +1,22 @@
 package main
 
+type User struct {
+	Id         int
+	Name       string
+	Birth      int
+	Created    int
+	Updated_at int
+}
+
+type Point struct {
+	User_id    int
+	Points     int
+	Max_points int
+}
+
 func main() {
+	// today := time.Now().Day()
+
 	// createDB("test")
 
 	// insertUser(1, "test 1", 2001, 07, 07)
@@ -15,10 +31,10 @@ func main() {
 
 	// listUserById(1)
 
-	// for i := 1; i <= 10; i++ {
-	// 	insertUser(i, "test"+strconv.Itoa(i), 2001, 9, 9)
+	// for i := 1; i <= 100; i++ {
+	// 	insertUser(i, "user "+strconv.Itoa(i), 2001, today, today)
 	// }
 
-	transaction(2, 2000)
+	// transaction(1, 2000)
 
 }
